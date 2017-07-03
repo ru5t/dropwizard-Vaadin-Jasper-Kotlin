@@ -1,0 +1,73 @@
+group 'md.ru5t'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.0.5-2'
+    //ext.dropwizard_version = '1.0.5'
+    ext.dropwizard_version = '1.1.0'    //to run on Java7
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+compileJava {
+    targetCompatibility = 1.7
+}
+
+mainClassName = 'md.ru5t.dw.vaadin.AppStarterKt'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+def vaadinVer = '8.0.6'
+
+dependencies {
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "io.dropwizard:dropwizard-core:$dropwizard_version"
+    compile "io.dropwizard:dropwizard-assets:$dropwizard_version"
+
+    compile 'com.google.code.gson:gson:2.7'
+    //  Vaadin
+    compile "com.vaadin:vaadin-themes:$vaadinVer"
+    compile "com.vaadin:vaadin-client-compiled:$vaadinVer"
+    compile "com.vaadin:vaadin-server:$vaadinVer"
+    //  Vaadin DSL
+    compile "ch.frankel.kaadin:kaadin-core:0.1-SNAPSHOT"
+    //  JASPER dependencies
+    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.4.0'
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.11'
+    compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+    //  jasper end
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    //  DATABASE
+    compile "io.dropwizard:dropwizard-hibernate:$dropwizard_version"    //dw - provider
+    compile 'com.microsoft.sqlserver:mssql-jdbc:6.1.7.jre8-preview'     //actual jdbc driver
+    //  compile 'mysql:mysql-connector-java:6.0.6' // uncomment for mysql
+}
+
+shadowJar {
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    mergeServiceFiles()
+}
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}

@@ -1,0 +1,19 @@
+#logging:
+#          level: DEBUG
+# dbUrl: jdbc:sqlserver://172.27.203.31:1433;databaseName=DanubeTanksDev;user=danube;password=12QWasZX
+database:
+    driverClass: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    user: danube
+    password: 12QWasZX
+    url: jdbc:sqlserver://172.27.203.31:1433;databaseName=DanubeTanksDev
+
+reportDir: /home/ru5t/Workspaces/POC/dwVaadinKt/reports
+
+
+server:
+        type : simple
+        applicationContextPath: /
+        adminContextPath: /hidden/admin
+        connector:
+                type: http
+                port: 9090

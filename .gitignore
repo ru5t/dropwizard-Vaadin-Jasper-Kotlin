@@ -1,0 +1,64 @@
+**.DS_Store
+*xcuserdata*
+gurtom/MobileWallet/.idea/dictionaries/
+gurtom/ommobile/BuildProjects/android/obj/
+gurtom/ommobile/BuildProjects/android/local/
+gurtom/ommobile/BuildProjects/android/build/
+gurtom/ommobile/BuildProjects/android/.gradle/
+
+# Cocoapods generated files #
+######################
+Pods
+Podfile.lock
+**/Pods/
+**/Podfile.lock
+*.xcworkspace
+**/*.xcworkspace/
+**/xcuserdata/
+
+# Xcode project files #
+######################
+xcuserdata
+
+# Platform specific #
+######################
+.DS_Store
+**/.DS_Store
+.idea/
+build/
+.gradle/
+local.properties
+captures
+*.iml
+
+# fastlane specific
+fastlane/report.xml
+
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots
+
+# scan temporary files
+fastlane/test_output
+
+# Certificate files
+*.cer
+*.certSigningRequest
+*.ipa
+*.p12
+*.dsym.ZIP
+*.mobileProvision
+
+# To evade tracking of build files
+*.o
+*.d
+
+#   IDEA - based projects
+gradle/
+gradlew*
+
+#   FAST Lane 
+README.md
+report.xml
