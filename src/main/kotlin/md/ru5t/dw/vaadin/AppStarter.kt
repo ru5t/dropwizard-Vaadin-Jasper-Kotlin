@@ -13,6 +13,8 @@ import org.eclipse.jetty.server.session.SessionHandler
 import javax.servlet.Servlet
 import io.dropwizard.hibernate.HibernateBundle
 import javax.persistence.*
+import javax.servlet.annotation.WebInitParam
+import javax.servlet.annotation.WebServlet
 
 
 /**
@@ -54,7 +56,14 @@ open class AppStarter :Application<AppConfig>(){
         bootstrap?.addBundle(hibernate)
     }
 
-    //  Vaadin Servlet Wrapper
+    //  Vaadin Servlet Wrapper                      @WebInitParam(name = "name", value = "admin")
+    //@WebServlet(asyncSupported = true, initParams = Array<WebInitParam>(@WebInitParam(name = "name", value = "admin")))
+    @WebServlet(
+            asyncSupported = true,
+            initParams = arrayOf(
+                WebInitParam(name = "pushmode", value = "automatic")
+            )
+    )
     @VaadinServletConfiguration(ui = MainUI::class , productionMode = false)
     class VServlet : VaadinServlet()
 

@@ -47,6 +47,7 @@ dependencies {
     compile "com.vaadin:vaadin-themes:$vaadinVer"
     compile "com.vaadin:vaadin-client-compiled:$vaadinVer"
     compile "com.vaadin:vaadin-server:$vaadinVer"
+    compile "com.vaadin:vaadin-push:$vaadinVer"
     //  Vaadin DSL
     compile "ch.frankel.kaadin:kaadin-core:0.1-SNAPSHOT"
     //  JASPER dependencies
