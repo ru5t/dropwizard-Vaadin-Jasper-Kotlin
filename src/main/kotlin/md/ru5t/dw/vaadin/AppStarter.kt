@@ -12,6 +12,7 @@ import md.ru5t.dw.vaadin.resources.ReportingResource
 import org.eclipse.jetty.server.session.SessionHandler
 import javax.servlet.Servlet
 import io.dropwizard.hibernate.HibernateBundle
+import md.ru5t.dw.vaadin.service.DbHelper
 import javax.persistence.*
 import javax.servlet.annotation.WebInitParam
 import javax.servlet.annotation.WebServlet
@@ -42,6 +43,7 @@ open class AppStarter :Application<AppConfig>(){
 
     override fun run(configuration: AppConfig?, environment: Environment?) {
         configuration?.sessionFactory = hibernate.sessionFactory
+        DbHelper.sessionFactory = hibernate.sessionFactory
         configuration?.let {
             val reportingResource = ReportingResource()
             environment?.let {

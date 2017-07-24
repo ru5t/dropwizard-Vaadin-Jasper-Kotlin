@@ -8,6 +8,8 @@ import com.vaadin.server.VaadinServletRequest
 import com.vaadin.ui.Button
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
+import md.ru5t.dw.vaadin.service.DbHelper
+
 //import ch.frankel.kaadin.horizontalLayout
 /**
  * Created by ru5t on 6/16/17.
@@ -27,7 +29,7 @@ class MainUI : UI() {
         val layout = VerticalLayout()
         layout.setSizeFull()
         content = layout
-        val button = Button("Report!!", Button.ClickListener {
+        val button = Button("Report!! size = ${DbHelper.statsList.size}", Button.ClickListener {
             ui.page.open("$baseAddr/reports/megaReport", "_blank")
         })
         layout.addComponent(button)
